@@ -1,0 +1,13 @@
+%option noinput
+%option nounput
+%%
+[a] {aCount+=yyleng;
+    return A;
+  }
+[b] {bCount+=yyleng; return B;}
+[c] {cCount+=yyleng; return C;}
+[d] {dCount+=yyleng; return D;}
+[e] {eCount+=yyleng; return E;}
+[a-zA-Z] { yyerror(yytext); }
+[ \t\n\r]+ { yyerror(yytext); };
+%%

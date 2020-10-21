@@ -1,0 +1,67 @@
+let rec netUnit = fun (inputs, weights) ->
+if inputs==[] && weights==[] then 0.0
+else
+List.hd(inputs) *. List.hd(weights) +. netUnit(List.tl(inputs), List.tl(weights))
+
+let rec netAll =fun(state, weightMatrix)->
+if state=[] || weightMatrix==[] then []
+else
+netUnit(state,List.hd(weightMatrix)) :: netAll(state, List.tl(weightMatrix))
+
+let hop11Activation = fun (net, oldo)->
+  if net>0. then 1.0
+  else
+    if net=0. then oldo
+    else -1.
+
+
+let rec nextHelp=fun(all,currentState)->
+  if all==[] then []
+  else
+  hop11Activation(List.hd(all),List.hd(currentState))::nextHelp(List.tl(all),List.tl(currentState))
+
+
+let rec nextState = fun (currentState, weightMatrix)->
+  if weightMatrix==[] then []
+  else
+  nextHelp(netUnit(currentState,List.hd(weightMatrix))::nextState(currentState,List.tl(weightMatrix)),currentState)
+
+
+let rec updateN=fun(currentState, weightMatrix, n)->
+  if n==1 then nextState(currentState,weightMatrix)
+  else updateN(nextState(currentState,weightMatrix),weightMatrix,n-1)
+
+
+let rec trainHelper=fun(astate,x,n)->
+if astate==[] then []
+else
+  if n==0 then 0. ::trainHelper(List.tl(astate),x,n-1)
+  else
+  x *. List.hd(astate)::trainHelper(List.tl(astate),x,n-1)
+
+
+let rec size=fun(i)->
+  if i==[] then 0
+  else 1+size(List.tl(i))
+
+let rec trainHelper2=fun(astate,n)->
+  if size(astate)<=n then []
+  else
+  trainHelper(astate,List.nth astate n,n) :: trainHelper2(astate,(n+1))
+
+let hopTrainAstate=fun(astate)->
+  trainHelper2(astate,0)
+
+
+let rec sum=fun(list1,list2)->
+  if list1==[] || list2==[] then []
+  else List.hd list1 +. List.hd(list2)::sum(List.tl list1,List.tl list2)
+
+let rec sum2=fun(list1,list2)->
+  if  list1==[] || list2==[] then list1
+  else sum(List.hd list1, List.hd list2)::sum2(List.tl list1,List.tl list2)
+
+let rec hopTrain=fun(allStates)->
+  if allStates==[] then []
+  else
+    sum2(hopTrainAstate(List.hd(allStates)),hopTrain(List.tl (allStates)))

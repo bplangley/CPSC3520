@@ -1,0 +1,61 @@
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeee
+
+>>>>CONTEXTUAL parsing of string<<<<<<
+
+*****Congratulations; parse successful*****
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <aabbcc
+
+>>>>CONTEXTUAL parsing of string<<<<<<syntax error
+
+Sorry, Charlie, input string not in L(G)
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <aaaaacdeeeee
+
+>>>>CONTEXTUAL parsing of string<<<<<<syntax error
+
+Sorry, Charlie, input string not in L(G)
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <abcde
+
+>>>>CONTEXTUAL parsing of string<<<<<<
+
+*****Congratulations; parse successful*****
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <aabbccddee_sp_eeeeddcccbaa
+
+>>>>CONTEXTUAL parsing of string<<<<<<
+
+Sorry, Charlie, input string not in L(G)
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <gabcde 
+
+>>>>CONTEXTUAL parsing of string<<<<<<g
+
+Sorry, Charlie, input string not in L(G)
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <aabbccddeeeeeeddcccbaa
+
+>>>>CONTEXTUAL parsing of string<<<<<<
+
+Sorry, Charlie, input string not in L(G)
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <eeeeddcccbaa
+
+>>>>CONTEXTUAL parsing of string<<<<<<
+
+*****Congratulations; parse successful*****
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <eeeeddccccccbbaa
+
+>>>>CONTEXTUAL parsing of string<<<<<<
+
+*****Congratulations; parse successful*****
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$ ./sde1 <eeddchccba
+
+>>>>CONTEXTUAL parsing of string<<<<<<h
+
+Sorry, Charlie, input string not in L(G)
+
+brandon@brandon-VirtualBox:~/Desktop/CPSC3520/SDE1$
